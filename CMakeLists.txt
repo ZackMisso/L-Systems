@@ -91,8 +91,15 @@ else()
 endif()
 
 add_executable(lsys
+    # Header files
+    include/lsys/common.h
+    include/lsys/subscreen.h
+    include/lsys/ui.h
+
     # Implementation files
     src/main.cpp
+    src/subscreen.cpp
+    src/ui.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking
