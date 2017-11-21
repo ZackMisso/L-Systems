@@ -19,7 +19,10 @@ UI::~UI() {
 }
 
 void UI::initializeSubscreens() {
-    // TODO
+    mainScreen = new MainSubScreen(this);
+
+    currentScreen = mainScreen;
+    switchType = SCR_MAIN;
 }
 
 bool UI::keyboardEvent(int key, int scancode, int action, int modifiers) {
@@ -27,28 +30,24 @@ bool UI::keyboardEvent(int key, int scancode, int action, int modifiers) {
 }
 
 void UI::draw(NVGcontext *ctx) {
-    // if (switchType != SCR_NONE) {
-    //     switchToScreen(switchType);
-    //     switchType = SCR_NONE;
-    // }
-    // currentScreen->draw(ctx);
+    if (switchType != SCR_NONE) {
+        switchToScreen(switchType);
+        switchType = SCR_NONE;
+    }
+    currentScreen->draw(ctx);
     Screen::draw(ctx);
 }
 
 void UI::drawContents() {
-    // currentScreen->drawContents();
+    currentScreen->drawContents();
 }
 
 void UI::switchToScreen(ScreenType type) {
-    // if (currentScreen->getType() == type) return;
-    //
-    // currentScreen->deinitialize();
-    //
-    // // TODO
-    // // if (type == SCR_MAIN) currentScreen = mainScreen;
-    // // else if (type == SCR_ERROR) currentScreen = errorScreen;
-    // // else if (type == SCR_EXT) currentScreen = extScreen;
-    // // else if (type == SCR_HEATMP) currentScreen = varScreen;
-    //
-    // currentScreen->initialize();
+    if (currentScreen->getType() == type) return;
+
+    currentScreen->deinitialize();
+
+    if (type == SCR_MAIN) currentScreen = mainScreen;
+
+    currentScreen->initialize();
 }

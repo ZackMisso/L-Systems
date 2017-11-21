@@ -2,6 +2,7 @@
 
 #include <lsys/common.h>
 #include <lsys/subscreen.h>
+#include <lsys/subscreen_main.h>
 // #include <nanogui/screen.h>
 // #include <nanogui/window.h>
 // #include <nanogui/slider.h>
@@ -21,6 +22,7 @@ public:
     void switchToScreen(ScreenType type);
 public:
     SubScreen* currentScreen;
+    MainSubScreen* mainScreen;
 
     ScreenType switchType;
 };

@@ -11,11 +11,10 @@ SubScreen::~SubScreen() {
 
 void SubScreen::clearScreen(NVGcontext* ctx) {
     // clear the screen
-    
-    // nvgBeginPath(ctx);
-    // nvgRect(ctx, 0, 0, 1024, 1024);
-    // nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
-    // nvgFill(ctx);
+    nvgBeginPath(ctx);
+    nvgRect(ctx, 0, 0, 1024, 1024);
+    nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
+    nvgFill(ctx);
 }
 
 ScreenType SubScreen::getType() { return type; }

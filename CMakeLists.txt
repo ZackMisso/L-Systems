@@ -95,11 +95,15 @@ add_executable(lsys
     include/lsys/common.h
     include/lsys/subscreen.h
     include/lsys/ui.h
+    include/lsys/render.h
+    include/lsys/subscreen_main.h
 
     # Implementation files
     src/main.cpp
     src/subscreen.cpp
     src/ui.cpp
+    src/render.cpp
+    src/subscreen_main.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking
