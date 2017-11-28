@@ -97,6 +97,8 @@ add_executable(lsys
     include/lsys/ui.h
     include/lsys/render.h
     include/lsys/subscreen_main.h
+    include/lsys/lsystem.h
+    include/lsys/rule.h
 
     # Implementation files
     src/main.cpp
@@ -104,6 +106,8 @@ add_executable(lsys
     src/ui.cpp
     src/render.cpp
     src/subscreen_main.cpp
+    src/lsystem.cpp
+    src/rule.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking

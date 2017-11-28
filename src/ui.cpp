@@ -27,6 +27,7 @@ void UI::initializeSubscreens() {
 
 bool UI::keyboardEvent(int key, int scancode, int action, int modifiers) {
     // TODO
+    return false;
 }
 
 void UI::draw(NVGcontext *ctx) {
