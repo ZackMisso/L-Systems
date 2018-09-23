@@ -10,7 +10,7 @@
 #include <string>
 #include <sstream>
 
-UI::UI() : nanogui::Screen(Eigen::Vector2i(1024, 1024), "Transmittance Tests") {
+UI::UI() : nanogui::Screen(Eigen::Vector2i(800, 800), "Transmittance Tests") {
     initializeSubscreens();
 }
 

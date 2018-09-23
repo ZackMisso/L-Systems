@@ -3,10 +3,6 @@
 #include <lsys/common.h>
 #include <lsys/subscreen.h>
 #include <lsys/subscreen_main.h>
-// #include <nanogui/screen.h>
-// #include <nanogui/window.h>
-// #include <nanogui/slider.h>
-// #include <nanogui/textbox.h>
 
 class UI : public nanogui::Screen {
 public:

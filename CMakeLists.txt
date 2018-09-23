@@ -99,7 +99,6 @@ add_executable(lsys
     include/lsys/subscreen_main.h
     include/lsys/lsystem.h
     include/lsys/rule.h
-		include/lsys/test.h
 
     # Implementation files
     src/main.cpp
@@ -109,7 +108,6 @@ add_executable(lsys
     src/subscreen_main.cpp
     src/lsystem.cpp
     src/rule.cpp
-		src/test.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking

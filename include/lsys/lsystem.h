@@ -3,13 +3,13 @@
 #include <lsys/common.h>
 #include <lsys/rule.h>
 
-// lsystem stored as a tree
-struct LSystemNode {
-		LSystemNode* children;
-    int numChildren;
-		float xpos;
-    float ypos;
-};
+// lsystem stored as a tree TODO later
+// struct LSystemNode {
+//     LSystemNode* children;
+//     int numChildren;
+//     float xpos;
+//     float ypos;
+// };
 
 class LSystem {
 public:
@@ -18,8 +18,16 @@ public:
 
     void addRule(Rule* rule);
     void removeRule(int index);
-    void buildSystem();
+
+    string process(string str) const;
+
+    string getAlphabet() const;
+    string getAxiom() const;
+
+    void setAlphabet(string param);
+    void setAxiom(string param);
 private:
-    LSystemNode* bakedSystem;
+    string alphabet;
+    string axiom;
     vector<Rule*> rules;
 };
