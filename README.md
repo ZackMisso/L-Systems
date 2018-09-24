@@ -6,11 +6,11 @@ supports the following semantics.
 
 L-System Semantics for current Gui:
 
-F    :: move forward
-+    :: clockwise rotation
--    :: counterclockwise rotation
-[    :: push
-]    :: pop
+"F"    :: move forward
+"+"    :: clockwise rotation
+"-"    :: counterclockwise rotation
+"["    :: push
+"]"    :: pop
 
 Here is some eye-candy from the current gui
 
