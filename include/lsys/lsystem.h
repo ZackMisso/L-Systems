@@ -19,7 +19,9 @@ public:
     void addRule(Rule* rule);
     void removeRule(int index);
 
-    string process(string str) const;
+    void parseFromFile(const string& filename);
+
+    string process(const string& str) const;
 
     string getAlphabet() const;
     string getAxiom() const;

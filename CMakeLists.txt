@@ -99,6 +99,8 @@ add_executable(lsys
     include/lsys/subscreen_main.h
     include/lsys/lsystem.h
     include/lsys/rule.h
+    include/lsys/util.h
+    include/lsys/vector.h
 
     # Implementation files
     src/main.cpp

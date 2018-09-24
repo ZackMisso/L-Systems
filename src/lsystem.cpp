@@ -1,4 +1,6 @@
 #include <lsys/lsystem.h>
+#include <fstream>
+#include <sstream>
 
 LSystem::LSystem() {
     rules = vector<Rule*>();
@@ -29,7 +31,42 @@ void LSystem::removeRule(int index) {
     rules.pop_back();
 }
 
-string LSystem::process(string str) const
+void LSystem::parseFromFile(const string& filename)
+{
+    // lsystems are formatted accordingly :
+    //
+    // alphabet
+    // axiom
+    // number of rules
+    // A1 -> B1
+    // A2 -> B2
+    // ........
+    // AN -> BN
+
+    ifstream file;
+    file.open(filename);
+    stringstream fileStream;
+    fileStream << file.rdbuf();
+    vector<string> tokens = vector<string>();
+    string str;
+
+    while (fileStream >> str)
+        tokens.push_back(str);
+
+    alphabet = tokens[0];
+    axiom = tokens[1];
+    int numRules = stoi(tokens[2]);
+    int index = 3;
+    for (int i = 0; i < numRules; ++i)
+    {
+        char c = tokens[index++][0];
+        index++;
+        string s = tokens[index++];
+        addRule(new Rule(c, s));
+    }
+}
+
+string LSystem::process(const string& str) const
 {
     string sentance = "";
 
