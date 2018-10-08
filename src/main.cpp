@@ -3,10 +3,17 @@
 #include <lsys/lsystem.h>
 #include <lsys/rule.h>
 
+#include <lsys/examples/sierpinski_carpet.h>
+#include <lsys/examples/sierpinski_triangle.h>
+#include <lsys/examples/koch_snowflake.h>
+// #include <imedit/image.h>
+
 bool testsuite();
 
 int main(int argc, char* argv[]) {
     std::cout << "L-Systems engaged" << std::endl;
+
+    // Image<double> imTest = Image<double>(100, 100, 3);
 
     // debug logic
     if (!testsuite())
@@ -49,3 +56,5 @@ bool testsuite()
     // TODO
     return true;
 }
+
+// fractals to implement:

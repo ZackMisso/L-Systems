@@ -60,6 +60,10 @@ set(NANOGUI_INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/ext/nanogui/include)
 set(EIGEN_INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/ext/nanogui/ext/eigen)
+set(IMGLIB_INCLUDE_DIR
+  ${CMAKE_CURRENT_SOURCE_DIR}/ext/ImageEditLib/include)
+set(STB_INCLUDE_DIR
+  ${CMAKE_CURRENT_SOURCE_DIR}/ext/ImageEditLib/ext/)
 
 # On top of adding the path to nanogui/include, you may need extras
 include_directories(
@@ -81,6 +85,11 @@ include_directories(
     # Nanogui include directory
     ${NANOGUI_INCLUDE_DIR}
     ${NANOGUI_EXTRA_INCS}
+
+    # Image edit library
+    ${IMGLIB_INCLUDE_DIR}
+    ${STB_INCLUDE_DIR}
+
     ext
 )
 
@@ -91,6 +100,9 @@ else()
 endif()
 
 add_executable(lsys
+    # Some external libs
+    # ext/ImageEditLib/include/imedit/image.h
+
     # Header files
     include/lsys/common.h
     include/lsys/subscreen.h
@@ -102,6 +114,12 @@ add_executable(lsys
     include/lsys/util.h
     include/lsys/vector.h
 
+    include/lsys/examples/exampleUI.h
+    include/lsys/examples/koch_snowflake.h
+    include/lsys/examples/sierpinski_carpet.h
+    include/lsys/examples/sierpinski_triangle.h
+    include/lsys/examples/uniform_mass_triangle.h
+
     # Implementation files
     src/main.cpp
     src/subscreen.cpp
@@ -110,6 +128,12 @@ add_executable(lsys
     src/subscreen_main.cpp
     src/lsystem.cpp
     src/rule.cpp
+
+    src/examples/exampleUI.cpp
+    src/examples/koch_snowflake.cpp
+    src/examples/sierpinski_carpet.cpp
+    src/examples/sierpinski_triangle.cpp
+    src/examples/uniform_mass_triangle.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking

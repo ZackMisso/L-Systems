@@ -1,3 +1,6 @@
 [submodule "ext/nanogui"]
 	path = ext/nanogui
 	url = https://github.com/wjakob/nanogui.git
+[submodule "ext/ImageEditLib"]
+	path = ext/ImageEditLib
+	url = https://github.com/ZackMisso/ImageEditLib.git
