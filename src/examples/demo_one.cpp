@@ -1,16 +1,15 @@
-#include <lsys/ui.h>
-#include <lsys/subscreen.h>
-#include <nanogui/layout.h>
-#include <nanogui/label.h>
-#include <nanogui/button.h>
-#include <nanogui/combobox.h>
+#include <lsys/examples/demo_one.h>
+#include <lsys/datastructures/pathdata.h>
+// #include <lsys/subscreen.h>
+// #include <nanogui/layout.h>
+// #include <nanogui/label.h>
+// #include <nanogui/button.h>
+// #include <nanogui/combobox.h>
 #include <functional>
 #include <string>
 #include <sstream>
 
-PathData::PathData(Vec2<float> p, Vec2<float> d) : pos(p), dir(d) { }
-
-UI::UI() : nanogui::Screen(Eigen::Vector2i(800, 800), "Transmittance Tests") {
+DemoOne::DemoOne() : ExampleUI(800, 800, "Demo One") {
     startPos = Vec2<float>(400.f, 700.f);
     startDir = Vec2<float>(0.f, -1.f);
     pathLength = 5.f;
@@ -21,11 +20,11 @@ UI::UI() : nanogui::Screen(Eigen::Vector2i(800, 800), "Transmittance Tests") {
     initializeGUI();
 }
 
-UI::~UI() {
+DemoOne::~DemoOne() {
     delete lsys;
 }
 
-void UI::initializeGUI()
+void DemoOne::initializeGUI()
 {
     nanogui::Window* window = new nanogui::Window(this, "editor");
     window->setPosition(Eigen::Vector2i(50, 50));
@@ -112,7 +111,7 @@ void UI::initializeGUI()
     performLayout();
 }
 
-void UI::createLSys()
+void DemoOne::createLSys()
 {
     lsys = new LSystem();
     lsys->setAlphabet("F+-[]");
@@ -120,7 +119,7 @@ void UI::createLSys()
     lsys->addRule(new Rule('F', "FF+[+F-F-F]-[-F+F+F]"));
 }
 
-bool UI::keyboardEvent(int key, int scancode, int action, int modifiers) {
+bool DemoOne::keyboardEvent(int key, int scancode, int action, int modifiers) {
     if (Screen::keyboardEvent(key, scancode, action, modifiers))
     {
         return true;
@@ -129,7 +128,7 @@ bool UI::keyboardEvent(int key, int scancode, int action, int modifiers) {
     return false;
 }
 
-void UI::draw(NVGcontext *ctx) {
+void DemoOne::draw(NVGcontext *ctx) {
     clearScreen(ctx);
 
     Screen::draw(ctx);
@@ -144,6 +143,8 @@ void UI::draw(NVGcontext *ctx) {
     Vec2<float> pos = startPos;
     Vec2<float> dir = startDir;
 
+    angle = glfwGetTime() / 1.5;
+
     for (int i = 0; i < sentance.length(); i++)
     {
         if (sentance[i] == 'F')
@@ -151,7 +152,7 @@ void UI::draw(NVGcontext *ctx) {
             // draw forward
             Vec2<float> newpos = pos + dir * pathLength;
             // cout << newpos[0] << " , " << newpos[1] << endl;
-            nvgStrokeColor(ctx, nanogui::Color(1.f, 1.f, 1.f, 0.1f));
+            nvgStrokeColor(ctx, nanogui::Color(1.f, 1.f, 1.f, 0.2f));
             nvgBeginPath(ctx);
 
             nvgMoveTo(ctx, pos[0], pos[1]);
@@ -187,15 +188,15 @@ void UI::draw(NVGcontext *ctx) {
     }
 }
 
-void UI::drawContents() {
+void DemoOne::drawContents() {
     // currentScreen->drawContents();
 }
 
-void UI::clearScreen(NVGcontext *ctx)
-{
-    // clear the screen
-    nvgBeginPath(ctx);
-    nvgRect(ctx, 0, 0, 1024, 1024);
-    nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
-    nvgFill(ctx);
-}
+// void DemoOne::clearScreen(NVGcontext *ctx)
+// {
+//     // clear the screen
+//     nvgBeginPath(ctx);
+//     nvgRect(ctx, 0, 0, 1024, 1024);
+//     nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
+//     nvgFill(ctx);
+// }

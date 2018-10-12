@@ -94,9 +94,9 @@ include_directories(
 )
 
 if(APPLE)
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -flto -Wno-unused-result -Wno-terminate -fno-strict-aliasing")
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -flto -Wno-unused-result -fno-strict-aliasing")
 else()
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -flto -Wno-unused-result -Wno-terminate -fno-strict-aliasing -Wlto-type-mismatch")
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -flto -Wno-unused-result -fno-strict-aliasing -Wlto-type-mismatch")
 endif()
 
 add_executable(lsys
@@ -105,35 +105,33 @@ add_executable(lsys
 
     # Header files
     include/lsys/common.h
-    include/lsys/subscreen.h
-    include/lsys/ui.h
-    include/lsys/render.h
-    include/lsys/subscreen_main.h
-    include/lsys/lsystem.h
-    include/lsys/rule.h
     include/lsys/util.h
-    include/lsys/vector.h
+
+    include/lsys/datastructures/pathdata.h
+    include/lsys/datastructures/vector.h
+    include/lsys/datastructures/rule.h
+    include/lsys/datastructures/lsystem.h
 
     include/lsys/examples/exampleUI.h
     include/lsys/examples/koch_snowflake.h
     include/lsys/examples/sierpinski_carpet.h
     include/lsys/examples/sierpinski_triangle.h
     include/lsys/examples/uniform_mass_triangle.h
+    include/lsys/examples/demo_one.h
 
     # Implementation files
     src/main.cpp
-    src/subscreen.cpp
-    src/ui.cpp
-    src/render.cpp
-    src/subscreen_main.cpp
-    src/lsystem.cpp
-    src/rule.cpp
+
+    src/datastructures/pathdata.cpp
+    src/datastructures/rule.cpp
+    src/datastructures/lsystem.cpp
 
     src/examples/exampleUI.cpp
     src/examples/koch_snowflake.cpp
     src/examples/sierpinski_carpet.cpp
     src/examples/sierpinski_triangle.cpp
     src/examples/uniform_mass_triangle.cpp
+    src/examples/demo_one.cpp
 )
 
 # Lastly, additional libraries may have been built for you.  In addition to linking

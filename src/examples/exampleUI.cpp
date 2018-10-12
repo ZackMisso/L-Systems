@@ -1,5 +1,7 @@
 #include <lsys/examples/exampleUI.h>
 
+// TODO : implement these base creation methods in nanogui
+
 ExampleUI::ExampleUI(int width,
                      int height,
                      string title) :
@@ -10,41 +12,64 @@ ExampleUI::ExampleUI(int width,
 
 ExampleUI::~ExampleUI()
 {
+    // does nothing for now
     // TODO
 }
 
 void ExampleUI::clearScreen(NVGcontext* ctx)
 {
-    // TODO
+    // clear the screen
+    nvgBeginPath(ctx);
+    nvgRect(ctx, 0, 0, 1024, 1024);
+    nvgFillColor(ctx, nvgRGBA(0, 0, 0, 255));
+    nvgFill(ctx);
 }
 
-nanogui::Label* ExampleUI::createLabel(string label)
+nanogui::Label* ExampleUI::createLabel(nanogui::Widget* widget,
+                                       string label)
 {
-    // TODO
-    return nullptr;
+    return new nanogui::Label(widget, label);
 }
 
-nanogui::IntBox<int>* ExampleUI::createIntBox(nanogui::Window* window,
-                                     int val,
-                                     int min,
-                                     int max)
+nanogui::IntBox<int>* ExampleUI::createIntBox(nanogui::Widget* widget,
+                                              int val,
+                                              int min,
+                                              int max,
+                                              const std::function<void(int)> &cb)
 {
-    // TODO
-    return nullptr;
+    nanogui::IntBox<int>* box = new nanogui::IntBox<int>(widget);
+    box->setValue(val);
+    box->setMinValue(min);
+    box->setMaxValue(max);
+    box->setEditable(true);
+    box->setCallback(cb);
+
+    return box;
 }
 
-nanogui::FloatBox<float>* ExampleUI::createFloatBox(nanogui::Window* window,
-                                           float val,
-                                           float min,
-                                           float max)
+nanogui::FloatBox<float>* ExampleUI::createFloatBox(nanogui::Widget* widget,
+                                                    float val,
+                                                    float min,
+                                                    float max,
+                                                    const std::function<void(float)> &cb)
 {
-    // TODO
-    return nullptr;
+    nanogui::FloatBox<float>* box = new nanogui::FloatBox<float>(widget);
+    box->setValue(val);
+    box->setMinValue(min);
+    box->setMaxValue(max);
+    box->setEditable(true);
+    box->setCallback(cb);
+
+    return box;
 }
 
-nanogui::TextBox* ExampleUI::createTextBox(nanogui::Window* window,
-                                  string text)
+nanogui::TextBox* ExampleUI::createTextBox(nanogui::Widget* widget,
+                                           string text,
+                                           const std::function<bool(const string&)> &cb)
 {
-    // TODO
-    return nullptr;
+    nanogui::TextBox* box = new nanogui::TextBox(widget);
+    box->setValue(text);
+    box->setEditable(true);
+    box->setCallback(cb);
+    return box;
 }

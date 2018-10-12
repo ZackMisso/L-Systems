@@ -1,4 +1,4 @@
-#include <lsys/lsystem.h>
+#include <lsys/datastructures/lsystem.h>
 #include <fstream>
 #include <sstream>
 

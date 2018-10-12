@@ -1,15 +1,7 @@
 #pragma once
 
 #include <lsys/common.h>
-#include <lsys/rule.h>
-
-// lsystem stored as a tree TODO later
-// struct LSystemNode {
-//     LSystemNode* children;
-//     int numChildren;
-//     float xpos;
-//     float ypos;
-// };
+#include <lsys/datastructures/rule.h>
 
 class LSystem {
 public:

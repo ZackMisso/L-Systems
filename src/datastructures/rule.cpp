@@ -1,4 +1,4 @@
-#include <lsys/rule.h>
+#include <lsys/datastructures/rule.h>
 
 Rule::Rule(char c, string s) : variable(c), semantics(s) { }
 
